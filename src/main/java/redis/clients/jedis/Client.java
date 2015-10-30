@@ -29,7 +29,6 @@ public class Client extends BinaryClient implements Commands {
     super(host, port);
   }
 
-  @Override
   public void wait(final String key, final int num, final int timeout) {
     wait(SafeEncoder.encode(key), num, timeout);
   }
