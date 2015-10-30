@@ -30,6 +30,11 @@ public class Client extends BinaryClient implements Commands {
   }
 
   @Override
+  public void wait(final String key, final int num, final int timeout) {
+    wait(key, num, timeout);
+  }
+
+  @Override
   public void set(final String key, final String value) {
     set(SafeEncoder.encode(key), SafeEncoder.encode(value));
   }

@@ -97,6 +97,10 @@ public class BinaryClient extends Connection {
     sendCommand(Command.PING);
   }
 
+  public void wait(final String key, final int num, final int timeout) {
+    sendCommand(Command.WAIT, toByteArray(num), toByteArray(timeout));
+  }
+
   public void set(final byte[] key, final byte[] value) {
     sendCommand(Command.SET, key, value);
   }

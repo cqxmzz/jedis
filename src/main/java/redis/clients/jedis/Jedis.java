@@ -61,6 +61,11 @@ public class Jedis extends BinaryJedis implements JedisCommands, MultiKeyCommand
     super(uri, connectionTimeout, soTimeout);
   }
 
+  public Long wait(final String key, final int num, int timeout) {
+    client.wait(key, num, timeout);
+    return client.getIntegerReply();
+  }
+
   /**
    * Set the string value as value of the key. The string can't be longer than 1073741824 bytes (1
    * GB).

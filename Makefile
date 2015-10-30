@@ -281,7 +281,7 @@ test:
 
 package:
 	make start
-	mvn clean package
+	mvn clean package -Dmaven.javadoc.skip=true
 	make stop
 
 deploy:

@@ -84,6 +84,15 @@ public class JedisCluster extends BinaryJedisCluster implements JedisClusterComm
     super(jedisClusterNode, connectionTimeout, soTimeout, maxRedirections, poolConfig);
   }
 
+  public Long wait(final String key, final int num, final int timeout) {
+    return new JedisClusterCommand<Long>(connectionHandler, maxRedirections) {
+      @Override
+      public Long execute(Jedis connection) {
+        return connection.wait(key, num, timeout);
+      }
+    }.run(key);
+  }
+
   @Override
   public String set(final String key, final String value) {
     return new JedisClusterCommand<String>(connectionHandler, maxRedirections) {
